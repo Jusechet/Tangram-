@@ -236,27 +236,27 @@ void draw() {
       popMatrix();
 
       //Ciclo if seleccion figura en mouse
-
+      
       if (mouseClick == false) {
-        if (mouseX>xTrg1 && mouseX<xTrg1+15 && mouseY>yTrg1 && mouseY<yTrg1+15 ) {
+        if ((sqrt(sq(mouseX-xTrg1)+sq(mouseY-yTrg1))) <= 15 ) {
           mouseSel="trg";
         } else {
-          if (mouseX>xTvg1 && mouseX<xTvg1+15 && mouseY>yTvg1 && mouseY<yTvg1+15 ) {
+          if ((sqrt(sq(mouseX-xTvg1)+sq(mouseY-yTvg1))) <= 15 ) {
             mouseSel="tvg";
           } else {
-            if (mouseX>xTnm1 && mouseX<xTnm1+15 && mouseY>yTnm1 && mouseY<yTnm1+15 ) {
+            if ((sqrt(sq(mouseX-xTnm1)+sq(mouseY-yTnm1))) <= 15 ) {
               mouseSel="tnm";
             } else {
-              if (mouseX>xPa1 && mouseX<xPa1+15 && mouseY>yPa1 && mouseY<yPa1+15 ) {
+              if ((sqrt(sq(mouseX-xPa1)+sq(mouseY-yPa1))) <= 15 ) {
                 mouseSel="pa";
               } else {
-                if (mouseX>xTmp1 && mouseX<xTmp1+15 && mouseY>yTmp1 && mouseY<yTmp1+15 ) {
+                if ((sqrt(sq(mouseX-xTmp1)+sq(mouseY-yTmp1))) <= 15 ) {
                   mouseSel="tmp";
                 } else {
-                  if (mouseX>xCpa1 && mouseX<xCpa1+15 && mouseY>yCpa1 && mouseY<yCpa1+15 ) {
+                  if ((sqrt(sq(mouseX-xCpa1)+sq(mouseY-yCpa1))) <= 15 ) {
                     mouseSel="cpa";
                   } else {
-                    if (mouseX>xTcp1 && mouseX<xTcp1+15 && mouseY>yTcp1 && mouseY<yTcp1+15 ) {
+                    if ((sqrt(sq(mouseX-xTcp1)+sq(mouseY-yTcp1))) <= 15 ) {
                       mouseSel="tcp";
                     } else {
                       if (mouseButton==RIGHT) {
