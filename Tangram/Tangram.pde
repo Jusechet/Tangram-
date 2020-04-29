@@ -1,3 +1,6 @@
+PImage img;
+
+
 //Coordenadas triangulo rojo grande puntos iniciales
 float xTrg1=1135;
 float yTrg1=250;
@@ -65,11 +68,13 @@ float B=random(255);
   void setup() {
   size (1650, 875);
   rectMode(CENTER);
+  img = loadImage("table.jpg");
+  strokeWeight(5);
 }
 
 void draw() {
 
-  background(0, 255, 255);
+  background(img);
   stroke(0, 0, 0);
   pixB=0;
 
@@ -82,7 +87,7 @@ void draw() {
   if (injuego==false) {
 
     //Titulo "Tangram"
-    fill(255, 255, 255);
+    fill(50, 250, 250);
     textSize(300);
     text("Tangram", 200, 300);
 
@@ -117,15 +122,18 @@ void draw() {
           popMatrix();
         }
       }
-      //Triangulo rojo grande
+      
+      //////Triangulo rojo grande//////
       pushMatrix();
       if (movTrg) {
         xTrg1 = mouseX;
         yTrg1 = mouseY;
+        stroke(140, 0, 0);
+      } else {
+        stroke(255, 0, 0);
       }
       translate(xTrg1, yTrg1);
       fill(255, 0, 0);
-      stroke(0, 0, 0);
       rotate(radians(anguloTrg));
       triangle(-125, 250, -125, -250, 125, 0);
 
@@ -134,15 +142,17 @@ void draw() {
       circle(0, 0, 20);
       popMatrix();
 
-      //Triangulo verde grande 
+      //////Triangulo verde grande//////
       pushMatrix();
       if (movTvg) {
         xTvg1 = mouseX;
         yTvg1 = mouseY;
+        stroke(0, 140, 0);
+      } else {
+        stroke(0, 255, 0);
       }
       translate(xTvg1, yTvg1);
       fill(0, 255, 0);
-      stroke(0, 0, 0);
       rotate(radians(anguloTvg));
       triangle(-250, -125, 250, -125, 0, 125);
 
@@ -151,11 +161,14 @@ void draw() {
       circle(0, 0, 20);
       popMatrix();  
 
-      //Triangulo naranja mediano
+      //////Triangulo naranja mediano//////
       pushMatrix();
       if (movTnm) {
         xTnm1 = mouseX;
         yTnm1 = mouseY;
+        stroke(190, 115, 0);
+      } else {
+        stroke(255, 153, 0);
       }
       translate(xTnm1, yTnm1);
       fill(255, 153, 0);
@@ -167,15 +180,17 @@ void draw() {
       circle(0, 0, 20);
       popMatrix();
 
-      //Paralelpipedo azul 
+      //////Paralelpipedo azul //////
       pushMatrix();
       if (movPa) {
         xPa1 = mouseX;
         yPa1 = mouseY;
+        stroke(100, 110, 255);
+      } else {
+        stroke(0, 0, 255);
       }
       translate(xPa1, yPa1);
       fill(0, 0, 255);
-      stroke(0, 0, 0);
       rotate(radians(anguloPa));
       quad(-187, 63, 63, 63, 188, -62, -62, -62);
 
@@ -184,15 +199,17 @@ void draw() {
       circle(0, 0, 20);
       popMatrix();
 
-      //Triangulo morado pequeño
+      //////Triangulo morado pequeño//////
       pushMatrix();
       if (movTmp) {
         xTmp1 = mouseX;
         yTmp1 = mouseY;
+        stroke(100, 0, 140);
+      } else {
+        stroke(199, 0, 255);
       }
       translate(xTmp1, yTmp1);
       fill(199, 0, 255);
-      stroke(0, 0, 0);
       rotate(radians(anguloTmp));
       triangle(0, -62, -125, 63, 125, 63);
 
@@ -201,15 +218,17 @@ void draw() {
       circle(0, 0, 20);
       popMatrix();
 
-      //Cuadrado pequeño amarillo
+      //////Cuadrado pequeño amarillo//////
       pushMatrix();
       if (movCpa) {
         xCpa1 = mouseX;
         yCpa1 = mouseY;
+        stroke(140, 140, 0);
+      } else {
+        stroke(255, 255, 0);
       }
       translate(xCpa1, yCpa1);
       fill(255, 255, 0);
-      stroke(0, 0, 0);
       rotate(radians(anguloCpa));
       quad(0, -125, 125, 0, 0, 125, -125, 0);
 
@@ -218,15 +237,17 @@ void draw() {
       circle(0, 0, 20);
       popMatrix();
 
-      //Triangulo cafe pequeño
+      //////Triangulo cafe pequeño//////
       pushMatrix();
       if (movTcp) {
         xTcp1 = mouseX;
         yTcp1 = mouseY;
+        stroke(140, 25, 25);
+      } else {
+        stroke(132, 85, 4);
       }
       translate(xTcp1, yTcp1);
       fill(132, 85, 4);
-      stroke(0, 0, 0);
       rotate(radians(anguloTcp));
       triangle(63, -125, 63, 125, -62, 0);
 
@@ -240,27 +261,36 @@ void draw() {
       if (mouseClick == false) {
         if ((sqrt(sq(mouseX-xTrg1)+sq(mouseY-yTrg1))) <= 15 ) {
           mouseSel="trg";
+          cursor(HAND);
         } else {
           if ((sqrt(sq(mouseX-xTvg1)+sq(mouseY-yTvg1))) <= 15 ) {
             mouseSel="tvg";
+            cursor(HAND);
           } else {
             if ((sqrt(sq(mouseX-xTnm1)+sq(mouseY-yTnm1))) <= 15 ) {
               mouseSel="tnm";
+              cursor(HAND);
             } else {
               if ((sqrt(sq(mouseX-xPa1)+sq(mouseY-yPa1))) <= 15 ) {
                 mouseSel="pa";
+                cursor(HAND);
               } else {
                 if ((sqrt(sq(mouseX-xTmp1)+sq(mouseY-yTmp1))) <= 15 ) {
                   mouseSel="tmp";
+                  cursor(HAND);
                 } else {
                   if ((sqrt(sq(mouseX-xCpa1)+sq(mouseY-yCpa1))) <= 15 ) {
                     mouseSel="cpa";
+                    cursor(HAND);
                   } else {
                     if ((sqrt(sq(mouseX-xTcp1)+sq(mouseY-yTcp1))) <= 15 ) {
                       mouseSel="tcp";
+                      cursor(HAND);
                     } else {
                       if (mouseButton==RIGHT) {
                         comprobacion();
+                      } else {
+                        cursor(ARROW);
                       }
                     }
                   }
@@ -273,6 +303,7 @@ void draw() {
     }
   }
 }
+
 void comprobacion() {
   pixB=pixelesblancos();
   if (mouseButton==RIGHT) {
