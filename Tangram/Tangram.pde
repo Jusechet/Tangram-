@@ -6,42 +6,49 @@ float xTrg1=1135;
 float yTrg1=250;
 float anguloTrg = 0;
 boolean movTrg=false;
+boolean movKeyTrg=false;
 
 //Coordenadas triangulo verde grande puntos iniciales
 float xTvg1=1250;
 float yTvg1=700;
 float anguloTvg=0;
 boolean movTvg=false;
+boolean movKeyTvg=false;
 
 //Coordenadas triangulo naranja mediano puntos iniciales 
 float xTnm1=1500;
 float yTnm1=180;
 float anguloTnm = 0;
 boolean movTnm=false;
+boolean movKeyTnm=false;
 
 //Coordenadas paralelpipedo azul puntos iniciales 
 float xPa1=800;
 float yPa1=200;
 float anguloPa = 0;
 boolean movPa=false;
+boolean movKeyPa=false;
 
 //Coordenadas triangulo morado pequeño puntos iniciales 
 float xTmp1=800;
 float yTmp1=500;
 float anguloTmp = 0;
 boolean movTmp=false; 
+boolean movKeyTmp=false;
 
 //Coordenadas cuadrado pequeño amarillo puntos iniciales
 float xCpa1=1500;
 float yCpa1=400;
 float anguloCpa = 0;
 boolean movCpa=false; 
+boolean movKeyCpa=false; 
 
 //Coordenadas triangulo cafe pequeño puntos iniciales 
 float xTcp1=900;
 float yTcp1=750;
 float anguloTcp = 0;
 boolean movTcp=false; 
+boolean movKeyTcp=false; 
 
 //figura que selecciona el mouse
 String mouseSel= "none";
@@ -302,6 +309,13 @@ void draw() {
       }
     }
   }
+  
+  ///evento para inicio de partida///
+  if (((mouseX>=550 && mouseX<=1090 && mouseY<=700&& mouseY>=500 && mousePressed == true) || keyPressed == true) && injuego==false) {
+    injuego=true;
+  }
+  
+ 
 }
 
 void comprobacion() {
@@ -336,12 +350,7 @@ int pixelesblancos () {
 }
 
 void mouseClicked() {
-
-  if (mouseX>=550 && mouseX<=1090 && mouseY<=700&& mouseY>=500 && injuego==false) {
-    injuego=true;
-  }
-
-  if (mouseSel == "trg") {
+  if (mouseSel == "trg" ) {
     if (movTrg==false) {
       movTrg=true;
       mouseClick = true;
@@ -441,4 +450,68 @@ void mouseWheel(MouseEvent event) {
   if (movTcp) {
     anguloTcp = anguloTcp + (event.getCount()*5);
   }
+}
+
+void keyPressed() {
+  if (key == 'r' ) {
+    if (movKeyTrg==false) {
+      movKeyTrg=true;
+    } else {
+      movKeyTrg=false;
+    }
+  }
+
+  if (key == 'v' ) {
+    if (movKeyTvg==false) {
+      movKeyTvg=true;
+    } else {
+      movKeyTvg=false;
+    }
+  }
+
+  if (key == 'n' ) {
+    if (movKeyTnm==false) {
+      movKeyTnm=true;
+    } else {
+      movKeyTnm=false;
+    }
+  }
+
+  if (key == 'a' ) {
+    if (movKeyPa==false) {
+      movKeyPa=true;
+    } else {
+      movKeyPa=false;
+    }
+  }
+
+  if (key == 'm' ) {
+    if (movKeyTmp==false) {
+      movKeyTmp=true;
+    } else {
+      movKeyTmp=false;
+    }
+  }
+
+  if (key == 'q' ) {
+    if (movKeyCpa==false) {
+      movKeyCpa=true;
+    } else {
+      movKeyCpa=false;
+    }
+  }
+
+  if (key == 'c' ) {
+    if (movKeyTcp==false) {
+      movKeyTcp=true;
+    } else {
+      movKeyTcp=false;
+    }
+  }
+  
+  ///movimiento Trg///
+  if (movKeyTrg && keyCode == UP){yTrg1--;}
+  if (movKeyTrg && keyCode == LEFT){xTrg1--;}
+  if (movKeyTrg && keyCode == DOWN){yTrg1++;}
+  if (movKeyTrg && keyCode == RIGHT){xTrg1++;}
 }
