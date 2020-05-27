@@ -40,7 +40,7 @@ class Triangle extends Figura{
     stroke(0);
     rotate(radians(angulo));
     triangle(p1,p2,p3,p4,p5,p6);
-    fill(255);
+    fill(0);
     circle(0, 0, 20);
     
   }

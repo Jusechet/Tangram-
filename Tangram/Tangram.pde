@@ -9,15 +9,20 @@ Triangle Tcp;
 Quad Cpa;
 Quad Pa;
 ////////
+//MODO CREADOR FIGURAS//
+Triangle TG1;
+Triangle TG2;
+Triangle TM;
+Triangle TP1;
+Triangle TP2;
+Quad CP;
+Quad P;
 
 String mouseSel;
 boolean mouseClick = false;
 
 //variable de victoria 
 boolean victoria=false;
-
-//numero de pixeles blancos
-int pixB=0;
 
 //nivel
 int niv=1;
@@ -37,28 +42,31 @@ float R=random(255);
 float G=random(255);
 float B=random(255);
 
-//Figuras modo creador 
-
-//Triangulo grande 1
-int xTG1=200;
-int yTG1=500;
-float anguloTG1=0;
-boolean movTG1=false;
-boolean movKeyTG1=false;
+//pixeles blancos
+int pixB=0;
 
 @Override 
   void setup() {
   size (1650, 875);
   rectMode(CENTER);
   ///Objetos///
-    Trg = new Triangle(color(255,0,0), 1135, 250, -125, 250, -125, -250, 125, 0, 0, false, false, false);
-    Tvg = new Triangle(color(0,255,0), 1250, 700, -250, -125, 250, -125, 0, 125, 0, false, false, false);
-    Tnm = new Triangle(color(255,153,0), 1500, 180, 90, -160, -160, 90, 90, 90, 0, false, false, false);
-    Tmp = new Triangle(color(200,0,255), 800, 500, 0, -62, -125, 63, 125, 63, 0, false, false, false);
-    Tcp = new Triangle(color(132,85,4), 900, 750, 63, -125, 63, 125, -62, 0, 0, false, false, false);
-    Cpa = new Quad(color(255,255,0), 1500, 400, 0, -125, 125, 0, 0, 125, -125, 0, 0, false, false, false);
-    Pa = new Quad(color(0,0,255), 800, 200, -187, 63, 63, 63, 188, -62, -62, -62, 0, false, false, false);
+  Trg = new Triangle(color(255, 0, 0), 1135, 250, -125, 250, -125, -250, 125, 0, 0, false, false, false);
+  Tvg = new Triangle(color(0, 255, 0), 1250, 700, -250, -125, 250, -125, 0, 125, 0, false, false, false);
+  Tnm = new Triangle(color(255, 153, 0), 1500, 180, 90, -160, -160, 90, 90, 90, 0, false, false, false);
+  Tmp = new Triangle(color(200, 0, 255), 800, 500, 0, -62, -125, 63, 125, 63, 0, false, false, false);
+  Tcp = new Triangle(color(132, 85, 4), 900, 750, 63, -125, 63, 125, -62, 0, 0, false, false, false);
+  Cpa = new Quad(color(255, 255, 0), 1500, 400, 0, -125, 125, 0, 0, 125, -125, 0, 0, false, false, false);
+  Pa = new Quad(color(0, 0, 255), 800, 200, -187, 63, 63, 63, 188, -62, -62, -62, 0, false, false, false);
   ////////////
+  //MODO CREADOR FIGURAS//
+  TG1= new Triangle(color(255, 255, 255), 200, 500, -125, 250, -125, -250, 125, 0, 0, false, false, false);
+  TG2= new Triangle(color(255, 255, 255), 325, 300, -250, -125, 250, -125, 0, 125, 0, false, false, false);
+  TM= new Triangle(color(255, 255, 255), 500, 700, 90, -160, -160, 90, 90, 90, 0, false, false, false);
+  TP1= new Triangle(color(255, 255, 255), 800, 500, 0, -62, -125, 63, 125, 63, 0, false, false, false);
+  TP2= new Triangle(color(255, 255, 255), 900, 750, 63, -125, 63, 125, -62, 0, 0, false, false, false);
+  CP= new Quad(color(255, 255, 255), 500, 400, 0, -125, 125, 0, 0, 125, -125, 0, 0, false, false, false);
+  P= new Quad(color(255,255,255), 800, 200, -187, 63, 63, 63, 188, -62, -62, -62, 0, false, false, false);
+  
   img = loadImage("table.jpg");
   strokeWeight(5);
 }
@@ -74,16 +82,11 @@ void draw() {
   float G=random(255);
   float B=random(255);
 
-  if (movTG1) {
-    xTG1=mouseX;
-    yTG1=mouseY;
-  }
-
   //Menu pricipal 
 
   if (menu) {
     //Titulo "Tangram"
-    fill(238,225,127);
+    fill(238, 225, 127);
     textSize(300);
     text("Tangram", 150, 300);
 
@@ -119,30 +122,66 @@ void draw() {
       fill(R, G, B);
       text("Crea tu propio nivel ", 10, 125);
 
-      //Triangulo grande 1 
-      push();
-      translate(xTG1, yTG1);
-      stroke(255, 255, 255);
-      fill(255, 255, 255);
-      rotate(radians(anguloTG1));
-      triangle(-100, 225, -100, -225, 100, 0);
+      //Triangulo Grande 1//
+      pushMatrix();
+      TG1.display();
+      TG1.mouseSel();
+      TG1.mouseClick();
+      TG1.rotar();
+      popMatrix();
 
-      //circulo inscrito en Trg
-      fill(0, 0, 0);
-      circle(0, 0, 20); 
-      pop();
-      if (mouseClick == false) {
-        if ((sqrt(sq(mouseX-xTG1)+sq(mouseY-yTG1))) <= 15 ) {
-          mouseSel="TG1";
-          cursor(HAND);
-        } else {
-          cursor(ARROW);
-        }
-      }
+      //Triangulo Grande 2//
+      pushMatrix();
+      TG2.display();
+      TG2.mouseSel();
+      TG2.mouseClick();
+      TG2.rotar();
+      popMatrix();
 
+      //Triangulo Mediano//
+      pushMatrix();
+      TM.display();
+      TM.mouseSel();
+      TM.mouseClick();
+      TM.rotar();
+      popMatrix();
+
+      //Triangulo Pequeño 1/
+      pushMatrix();
+      TP1.display();
+      TP1.mouseSel();
+      TP1.mouseClick();
+      TP1.rotar();
+      popMatrix();
+
+
+      //Triangulo Pequeño 2//
+      pushMatrix();
+      TP2.display();
+      TP2.mouseSel();
+      TP2.mouseClick();
+      TP2.rotar();
+      popMatrix();
+
+      //Cuadrado pequeño//
+      pushMatrix();
+      CP.display();
+      CP.mouseSel();
+      CP.mouseClick();
+      CP.rotar();
+      popMatrix();
+
+      //Paralelogramo//
+      pushMatrix();
+      P.display();
+      P.mouseSel();
+      P.mouseClick();
+      P.rotar();
+      popMatrix();
+      
       //Guardar nivel
       //Boton de guardado
-      stroke(0, 0, 0);
+      stroke(10, 10, 10);
       fill(255, 255, 0);
       quad(1425, 700, 1425, 600, 1600, 600, 1600, 700);
       fill(0, 0, 0);
@@ -180,6 +219,7 @@ void draw() {
       }
 
       if (niveles) {
+        comprobar(pixB);
         //Niv 1
         if (niv==1) {
           pushMatrix();
@@ -188,8 +228,8 @@ void draw() {
           square(350, 350, 500);
           popMatrix();
         } else {
+          //Niv 2
           if (niv==2) {
-            //Niv 2
             pushMatrix();
             fill(255, 255, 255);
             noStroke();
@@ -205,113 +245,71 @@ void draw() {
         }
 
         //// Metodos de las figuras ////
-        
+
         pushMatrix();
-          Trg.display();
-          Trg.mouseSel();
-          Trg.mouseClick();
-          Trg.rotar();
-        popMatrix();
-        
-        pushMatrix();
-          Tvg.display();
-          Tvg.mouseSel();
-          Tvg.mouseClick();
-          Tvg.rotar();
-        popMatrix();
-        
-        pushMatrix();
-          Tnm.display();
-          Tnm.mouseSel();
-          Tnm.mouseClick();
-          Tnm.rotar();
-        popMatrix();
-        
-        pushMatrix();
-          Tmp.display();
-          Tmp.mouseSel();
-          Tmp.mouseClick();
-          Tmp.rotar();
-        popMatrix();
-        
-        pushMatrix();
-          Tcp.display();
-          Tcp.mouseSel();
-          Tcp.mouseClick();
-          Tcp.rotar();
-        popMatrix();
-        
-        pushMatrix();
-          Cpa.display();
-          Cpa.mouseSel();
-          Cpa.mouseClick();
-          Cpa.rotar();
-        popMatrix();
-        
-        pushMatrix();
-          Pa.display();
-          Pa.mouseSel();
-          Pa.mouseClick();
-          Pa.rotar();
+        Trg.display();
+        Trg.mouseSel();
+        Trg.mouseClick();
+        Trg.rotar();
         popMatrix();
 
+        pushMatrix();
+        Tvg.display();
+        Tvg.mouseSel();
+        Tvg.mouseClick();
+        Tvg.rotar();
+        popMatrix();
+
+        pushMatrix();
+        Tnm.display();
+        Tnm.mouseSel();
+        Tnm.mouseClick();
+        Tnm.rotar();
+        popMatrix();
+
+        pushMatrix();
+        Tmp.display();
+        Tmp.mouseSel();
+        Tmp.mouseClick();
+        Tmp.rotar();
+        popMatrix();
+
+        pushMatrix();
+        Tcp.display();
+        Tcp.mouseSel();
+        Tcp.mouseClick();
+        Tcp.rotar();
+        popMatrix();
+
+        pushMatrix();
+        Cpa.display();
+        Cpa.mouseSel();
+        Cpa.mouseClick();
+        Cpa.rotar();
+        popMatrix();
+
+        pushMatrix();
+        Pa.display();
+        Pa.mouseSel();
+        Pa.mouseClick();
+        Pa.rotar();
+        popMatrix();
       }
     }
   }
 }
 
-
-void comprobacion() {
-  pixB=pixelesblancos();
-  if (mouseButton==RIGHT) {
-    if (pixB<=500) {
-      print("victoria");
-      fill(255, 255, 255);
-      rect(width/2, height/2, 500, 500);
-      fill(0, 0, 0);
-      text("Siguiente nivel", width/2, height/2 );
-      delay(3000);
-      niv=niv+1;
-    } else {
-      fill(0, 0, 0);
-      rect(width/2, height/2, 500, 500);
-      print(pixB);
-    }
-  }
-  //print("coordenada x", mouseX , "coordenada y", mouseY);
-}
-
-int pixelesblancos () {
+void comprobar(int pixB) {
+  int pixBl=pixB;
   loadPixels();
-  for (int i=0; i<width*height; i++) {
-    color c=pixels[i];
+  for (int i=0; i<width * height; i++) { 
+    color c = pixels[i];
     if (red(c)==255 && green(c)==255 && blue(c)==255) {
-      pixB=pixB+1;
+      pixBl=+1;
     }
   }
-  return pixB;
-}
-
-void mouseClicked() {
-
-  //MODO CREADOR
-
-  if (mouseSel == "TG1" ) {
-    if (movTG1==false) {
-      movTG1=true;
-      mouseClick = true;
-    } else {
-      movTG1=false;
-      mouseClick = false;
-    }
-  }
-}
-
-void mouseWheel(MouseEvent event) { 
-
-  //MODO CREADOR
-  
-  if (movTG1) {
-    anguloTG1 = anguloTG1 + (event.getCount()*5);
+  if (pixBl<=100 && mousePressed && mouseButton==RIGHT) {
+    niv=niv+1;
+    delay(5000);
   }
 }
