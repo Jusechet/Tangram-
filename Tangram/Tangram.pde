@@ -2,7 +2,7 @@ PImage img;
 //Archivos JSON//
 JSONObject nivc;
 JSONObject niva;
-JSONObject tg1;
+
 
 
 
@@ -331,93 +331,80 @@ void draw() {
         Py4=P.darp8();
 
         //Guardado en JSON//
-        JSONObject Nivel= new JSONObject();
-        //Triangulo grande 1//
-        JSONObject TG1 =new JSONObject(); 
-        TG1.setFloat("X", TG1X);
-        TG1.setFloat("Y", TG1Y);
-        TG1.setFloat("PX1", TG1x1);
-        TG1.setFloat("PY1", TG1y1);
-        TG1.setFloat("PX2", TG1x2);
-        TG1.setFloat("PY2", TG1y2);
-        TG1.setFloat("PX3", TG1x3);
-        TG1.setFloat("PY3", TG1y3);
-        Nivel.setJSONObject("TG1", TG1);
-        //Triangulo grande 2//
-        JSONObject TG2 =new JSONObject(); 
-        TG2.setFloat("X", TG2X);
-        TG2.setFloat("Y", TG2Y);
-        TG2.setFloat("PX1", TG2x1);
-        TG2.setFloat("PY1", TG2y1);
-        TG2.setFloat("PX2", TG2x2);
-        TG2.setFloat("PY2", TG2y2);
-        TG2.setFloat("PX3", TG2x3);
-        TG2.setFloat("PY3", TG2y3);
-        Nivel.setJSONObject("TG2", TG2);
+        JSONObject nivel;
+        nivel= new JSONObject();
+        //Triagnulo grande 1//
+        nivel.setFloat("TG1X", TG1X);
+        nivel.setFloat("TG1Y", TG1Y);
+        nivel.setFloat("TG1x1", TG1x1);
+        nivel.setFloat("TG1y1", TG1y1);
+        nivel.setFloat("TG1x2", TG1x2);
+        nivel.setFloat("TG1y2", TG1y2);
+        nivel.setFloat("TG1x3", TG1x3);
+        nivel.setFloat("TG1y3", TG1y3);
+        //Triagnulo grande 2//
+        nivel.setFloat("TG2X", TG2X);
+        nivel.setFloat("TG2Y", TG2Y);
+        nivel.setFloat("TG2x1", TG2x1);
+        nivel.setFloat("TG2y1", TG2y1);
+        nivel.setFloat("TG2x2", TG2x2);
+        nivel.setFloat("TG2y2", TG2y2);
+        nivel.setFloat("TG2x3", TG2x3);
+        nivel.setFloat("TG2y3", TG2y3);
         //Triangulo mediano//
-        JSONObject TM =new JSONObject(); 
-        TM.setFloat("X", TMX);
-        TM.setFloat("Y", TMY);
-        TM.setFloat("PX1", TMx1);
-        TM.setFloat("PY1", TMy1);
-        TM.setFloat("PX2", TMx2);
-        TM.setFloat("PY2", TMy2);
-        TM.setFloat("PX3", TMx3);
-        TM.setFloat("PY3", TMy3);
-        Nivel.setJSONObject("TM", TM);
-        //Triangulo pequeño 1// 
-        JSONObject TP1 =new JSONObject(); 
-        TP1.setFloat("X", TP1X);
-        TP1.setFloat("Y", TP1Y);
-        TP1.setFloat("PX1", TP1x1);
-        TP1.setFloat("PY1", TP1y1);
-        TP1.setFloat("PX2", TP1x2);
-        TP1.setFloat("PY2", TP1y2);
-        TP1.setFloat("PX3", TP1x3);
-        TP1.setFloat("PY3", TP1y3);
-        Nivel.setJSONObject("TP1", TP1);
-        //Triangulo pequeño 2//
-        JSONObject TP2 =new JSONObject(); 
-        TP2.setFloat("X", TP2X);
-        TP2.setFloat("Y", TP2Y);
-        TP2.setFloat("PX1", TP2x1);
-        TP2.setFloat("PY1", TP2y1);
-        TP2.setFloat("PX2", TP2x2);
-        TP2.setFloat("PY2", TP2y2);
-        TP2.setFloat("PX3", TP2x3);
-        TP2.setFloat("PY3", TP2y3);
-        Nivel.setJSONObject("TP2", TP2);
-        //Cuadrado pequeño// 
-        JSONObject CP= new JSONObject();
-        CP.setFloat("X", CPX);
-        CP.setFloat("Y", CPY);
-        CP.setFloat("PX1", CPx1);
-        CP.setFloat("PX2", CPx2);
-        CP.setFloat("PX3", CPx3);
-        CP.setFloat("PX4", CPx4);
-        CP.setFloat("PY1", CPy1);
-        CP.setFloat("PY2", CPy2);
-        CP.setFloat("PY3", CPy3);
-        CP.setFloat("PY4", CPy4);
-        Nivel.setJSONObject("CP", CP);
-        //Paralelograma// 
-        JSONObject P= new JSONObject();
-        P.setFloat("X", PX);
-        P.setFloat("Y", PY);
-        P.setFloat("PX1", Px1);
-        P.setFloat("PX2", Px2);
-        P.setFloat("PX3", Px3);
-        P.setFloat("PX4", Px4);
-        P.setFloat("PY1", Py1);
-        P.setFloat("PY2", Py2);
-        P.setFloat("PY3", Py3);
-        P.setFloat("PY4", Py4);
-        Nivel.setJSONObject("P", P);
+        nivel.setFloat("TMX", TMX);
+        nivel.setFloat("TMY", TMY);
+        nivel.setFloat("TMx1", TMx1);
+        nivel.setFloat("TMy1", TMy1);
+        nivel.setFloat("TMx2", TMx2);
+        nivel.setFloat("TMy2", TMy2);
+        nivel.setFloat("TMx3", TMx3);
+        nivel.setFloat("TMy3", TMy3);
+        //Triangulo pequeño 1//
+        nivel.setFloat("TP1X", TP1X);
+        nivel.setFloat("TP1Y", TP1Y);
+        nivel.setFloat("TP1x1", TP1x1);
+        nivel.setFloat("TP1y1", TP1y1);
+        nivel.setFloat("TP1x2", TP1x2);
+        nivel.setFloat("TP1y2", TP1y2);
+        nivel.setFloat("TP1x3", TP1x3);
+        nivel.setFloat("TP1y3", TP1y3);
+        //Triangulo pequeño 2// 
+        nivel.setFloat("TP2X", TP2X);
+        nivel.setFloat("TP2Y", TP2Y);
+        nivel.setFloat("TP2x1", TP2x1);
+        nivel.setFloat("TP2y1", TP2y1);
+        nivel.setFloat("TP2x2", TP2x2);
+        nivel.setFloat("TP2y2", TP2y2);
+        nivel.setFloat("TP2x3", TP2x3);
+        nivel.setFloat("TP2y3", TP2y3);
+        //Cuadrado pequeño//
+        nivel.setFloat("CPX", CPX);
+        nivel.setFloat("CPY", CPY);
+        nivel.setFloat("CPx1", CPx1);
+        nivel.setFloat("CPy1", CPy1);
+        nivel.setFloat("CPx2", CPx2);
+        nivel.setFloat("CPy2", CPy2);
+        nivel.setFloat("CPx3", CPx3);
+        nivel.setFloat("CPy3", CPy3);
+        nivel.setFloat("CPx4", CPx4);
+        nivel.setFloat("CPy4", CPy4);
+        //Paralelpipedo//
+        nivel.setFloat("PX", PX);
+        nivel.setFloat("PY", PY);
+        nivel.setFloat("Px1", Px1);
+        nivel.setFloat("Py1", Py1);
+        nivel.setFloat("Px2", Px2);
+        nivel.setFloat("Py2", Py2);
+        nivel.setFloat("Px3", Px3);
+        nivel.setFloat("Py3", Py3);
+        nivel.setFloat("Px4", Px4);
+        nivel.setFloat("Py4", Py4);
+        saveJSONObject(nivel, "data/"+num_nivC);
 
-        nivc.setJSONObject(num_nivC, Nivel);
         delay(3000);
         num_nivc=num_nivc+1;
-        nivc.setInt("Numero de niveles creados",num_nivc);
+        nivc.setInt("Numero de niveles creados", num_nivc);
         saveJSONObject(nivc, "data/Niveles creados");
       }
     }
@@ -527,18 +514,17 @@ void draw() {
       } else {
         if (creados) {
           comprobar(pixB);
-          String nivel=str(niv);
+          //String nivel=str(niv);
           while (niv<=num_nivc) {
-            niva=nivc.getJSONObject(nivel);
+            niva=loadJSONObject("data/1");
             //Triangulo grande 1//
-            tg1=niva.getJSONObject("TG1");
-            int TG1X=int(tg1.getFloat("X"));
             pushMatrix();
-            translate(int(tg1.getFloat("X")),int(tg1.getFloat("Y")));
-            fill(255,255,255);
-            triangle(int(tg1.getFloat("PX1")),int(tg1.getFloat("PY1")),int(tg1.getFloat("PX2")),int(tg1.getFloat("PY2")),int(tg1.getFloat("PX3")),int(tg1.getFloat("PY3")));
+            translate(int(niva.getFloat("TG1X")), int(niva.getFloat("TG1Y")));
+            fill(255, 255, 255);
+            triangle(int(niva.getFloat("TG1x1")),int(niva.getFloat("TG1y1")),int(niva.getFloat("TG1x2")),int(niva.getFloat("TG1y2")),int(niva.getFloat("TG1x3")),int(niva.getFloat("TG1y3")));
             popMatrix();
-            print(TG1X);
+            
+            print(int(niva.getFloat("TG1X")));
           }
         }
       }
