@@ -1,5 +1,5 @@
-class Quad extends Figura{
-  
+class Quad extends Figura {
+
   float p1;
   float p2;
   float p3;
@@ -8,31 +8,61 @@ class Quad extends Figura{
   float p6;
   float p7;
   float p8;
-  
-  Quad(color c_, float xPos_, float yPos_,float p1_, float p2_, float p3_, float p4_, float p5_, float p6_, float p7_, float p8_,int angulo_, boolean mSel_, boolean mClick_, boolean mov_){
+
+  Quad(color c_, float xPos_, float yPos_, float p1_, float p2_, float p3_, float p4_, float p5_, float p6_, float p7_, float p8_, int angulo_, boolean mSel_, boolean mClick_, boolean mov_) {
     super(c_, xPos_, yPos_, angulo_, mSel_, mClick_);
-    
-  p1 = p1_;
-  p2 = p2_;
-  p3 = p3_;
-  p4 = p4_;
-  p5 = p5_;
-  p6 = p6_;
-  p7 = p7_;
-  p8 = p8_;
-    
-  
+
+    p1 = p1_;
+    p2 = p2_;
+    p3 = p3_;
+    p4 = p4_;
+    p5 = p5_;
+    p6 = p6_;
+    p7 = p7_;
+    p8 = p8_;
   }
 
-  void mouseSel(){
+  float darp1() {
+    return p1;
+  }
+
+  float darp2() {
+    return p2;
+  }
+
+  float darp3() {
+    return p3;
+  }
+
+  float darp4() {
+    return p4;
+  }
+
+  float darp5() {
+    return p5;
+  }
+
+  float darp6() {
+    return p6;
+  }
+  
+    float darp7() {
+    return p7;
+  }
+  
+    float darp8() {
+    return p8;
+  }
+  
+  void mouseSel() {
     super.mouseSel();
   }
-  
-  void mouseClick(){
+
+  void mouseClick() {
     super.mouseClick();
   }
-  
-  void display(){
+
+  void display() {
 
     if (mClick) {
       xPos = mouseX;
@@ -45,15 +75,14 @@ class Quad extends Figura{
     fill(c);
     stroke(0);
     rotate(radians(angulo));
-    quad(p1,p2,p3,p4,p5,p6,p7,p8);
+    quad(p1, p2, p3, p4, p5, p6, p7, p8);
     fill(0);
     circle(0, 0, 20);
-
   }
-  
 
-  
-  void rotar(){
+
+
+  void rotar() {
     super.rotar();
   }
 }
