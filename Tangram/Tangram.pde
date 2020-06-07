@@ -135,7 +135,7 @@ int pixB=0;
   ////////////
   //JSON Objects//
 
-  nivc= loadJSONObject("data/Niveles creados");
+  nivc= loadJSONObject("data/Niveles_creados");
 
   img = loadImage("table.jpg");
   strokeWeight(5);
@@ -147,7 +147,6 @@ void draw() {
   stroke(0, 0, 0);
   pixB=0;
   int num_nivc=nivc.getInt("Numero de niveles creados");
-  print(num_nivc);
   String num_nivC=str(num_nivc+1);
 
   //variables colores
@@ -405,7 +404,7 @@ void draw() {
         delay(3000);
         num_nivc=num_nivc+1;
         nivc.setInt("Numero de niveles creados", num_nivc);
-        saveJSONObject(nivc, "data/Niveles creados");
+        saveJSONObject(nivc, "data/Niveles_creados");
       }
     }
 
@@ -513,24 +512,124 @@ void draw() {
         popMatrix();
       } else {
         if (creados) {
-          comprobar(pixB);
+
+          comprobar_nivc(pixB);
           //String nivel=str(niv);
-          while (niv<=num_nivc) {
-            niva=loadJSONObject("data/1");
-            //Triangulo grande 1//
-            pushMatrix();
-            translate(int(niva.getFloat("TG1X")), int(niva.getFloat("TG1Y")));
-            fill(255, 255, 255);
-            triangle(int(niva.getFloat("TG1x1")),int(niva.getFloat("TG1y1")),int(niva.getFloat("TG1x2")),int(niva.getFloat("TG1y2")),int(niva.getFloat("TG1x3")),int(niva.getFloat("TG1y3")));
-            popMatrix();
-            
-            print(int(niva.getFloat("TG1X")));
-          }
+
+          niva=loadJSONObject("data/1");
+
+          //Triangulo grande 1//
+          pushMatrix();
+          translate(int(niva.getFloat("TG1X")), int(niva.getFloat("TG1Y")));
+          stroke(255, 255, 255);
+          fill(255, 255, 255);
+          triangle(int(niva.getFloat("TG1x1")), int(niva.getFloat("TG1y1")), int(niva.getFloat("TG1x2")), int(niva.getFloat("TG1y2")), int(niva.getFloat("TG1x3")), int(niva.getFloat("TG1y3")));
+          popMatrix();
+
+          //Triangulo grande 2//
+          pushMatrix();
+          translate(int(niva.getFloat("TG2X")), int(niva.getFloat("TG2Y")));
+          stroke(255, 255, 255);
+          fill(255, 255, 255);
+          triangle(int(niva.getFloat("TG2x1")), int(niva.getFloat("TG2y1")), int(niva.getFloat("TG2x2")), int(niva.getFloat("TG2y2")), int(niva.getFloat("TG2x3")), int(niva.getFloat("TG2y3")));
+          popMatrix();
+
+          //Triangulo mediano//
+          pushMatrix();
+          translate(int(niva.getFloat("TMX")), int(niva.getFloat("TMY")));
+          stroke(255, 255, 255);
+          fill(255, 255, 255);
+          triangle(int(niva.getFloat("TMx1")), int(niva.getFloat("TMy1")), int(niva.getFloat("TMx2")), int(niva.getFloat("TMy2")), int(niva.getFloat("TMx3")), int(niva.getFloat("TMy3")));
+          popMatrix();
+
+          //Triangulo pequeño 1//
+          pushMatrix();
+          translate(int(niva.getFloat("TP1X")), int(niva.getFloat("TP1Y")));
+          stroke(255, 255, 255);
+          fill(255, 255, 255);
+          triangle(int(niva.getFloat("TP1x1")), int(niva.getFloat("TP1y1")), int(niva.getFloat("TP1x2")), int(niva.getFloat("TP1y2")), int(niva.getFloat("TP1x3")), int(niva.getFloat("TP1y3")));
+          popMatrix();
+
+          //Triangulo pequeño 2//
+          pushMatrix();
+          translate(int(niva.getFloat("TP2X")), int(niva.getFloat("TP2Y")));
+          stroke(255, 255, 255);
+          fill(255, 255, 255);
+          triangle(int(niva.getFloat("TP2x1")), int(niva.getFloat("TP2y1")), int(niva.getFloat("TP2x2")), int(niva.getFloat("TP2y2")), int(niva.getFloat("TP2x3")), int(niva.getFloat("TP2y3")));
+          popMatrix();
+
+          //Cuadrado pequeño//
+          pushMatrix();
+          translate(int(niva.getFloat("CPX")), int(niva.getFloat("CPY")));
+          stroke(255, 255, 255);
+          fill(255, 255, 255);
+          quad(int(niva.getFloat("CPx1")), int(niva.getFloat("CPy1")), int(niva.getFloat("CPx2")), int(niva.getFloat("CPy2")), int(niva.getFloat("CPx3")), int(niva.getFloat("CPy3")), int(niva.getFloat("CPx4")), int(niva.getFloat("CPy4")));
+          popMatrix();
+
+          //Paralelepipedo//
+          pushMatrix();
+          translate(int(niva.getFloat("PX")), int(niva.getFloat("PY")));
+          stroke(255, 255, 255);
+          fill(255, 255, 255);
+          quad(int(niva.getFloat("Px1")), int(niva.getFloat("Py1")), int(niva.getFloat("Px2")), int(niva.getFloat("Py2")), int(niva.getFloat("Px3")), int(niva.getFloat("Py3")), int(niva.getFloat("Px4")), int(niva.getFloat("Py4")));
+          popMatrix();
+
+          //// Metodos de las figuras ////
+
+          pushMatrix();
+          Trg.display();
+          Trg.mouseSel();
+          Trg.mouseClick();
+          Trg.rotar();
+          popMatrix();
+
+          pushMatrix();
+          Tvg.display();
+          Tvg.mouseSel();
+          Tvg.mouseClick();
+          Tvg.rotar();
+          popMatrix();
+
+          pushMatrix();
+          Tnm.display();
+          Tnm.mouseSel();
+          Tnm.mouseClick();
+          Tnm.rotar();
+          popMatrix();
+
+          pushMatrix();
+          Tmp.display();
+          Tmp.mouseSel();
+          Tmp.mouseClick();
+          Tmp.rotar();
+          popMatrix();
+
+          pushMatrix();
+          Tcp.display();
+          Tcp.mouseSel();
+          Tcp.mouseClick();
+          Tcp.rotar();
+          popMatrix();
+
+          pushMatrix();
+          Cpa.display();
+          Cpa.mouseSel();
+          Cpa.mouseClick();
+          Cpa.rotar();
+          popMatrix();
+
+          pushMatrix();
+          Pa.display();
+          Pa.mouseSel();
+          Pa.mouseClick();
+          Pa.rotar();
+          popMatrix();
         }
       }
     }
   }
 }
+
 
 void comprobar(int pixB) {
   int pixBl=pixB;
@@ -556,8 +655,8 @@ void comprobar_nivc(int pixB) {
       pixBl=+1;
     }
   }
-  if (pixBl<=100 && mousePressed && mouseButton==RIGHT) {
+  if (pixBl<=1000 && mousePressed && mouseButton==RIGHT) {
     niv=niv+1;
-    delay(3000);
+    //delay(3000);
   }
 }
