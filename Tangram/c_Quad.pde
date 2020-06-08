@@ -1,5 +1,5 @@
-class Quad extends Figura{
-  
+class Quad extends Figura {
+
   float p1;
   float p2;
   float p3;
@@ -8,7 +8,7 @@ class Quad extends Figura{
   float p6;
   float p7;
   float p8;
-  
+
   Quad(char n_, color c_, float xPos_, float yPos_,float p1_, float p2_, float p3_, float p4_, float p5_, float p6_, float p7_, float p8_,float angulo_, boolean tSel_, boolean mClick_){
     super(n_, c_, xPos_, yPos_, angulo_, tSel_, mClick_);
     
@@ -20,12 +20,10 @@ class Quad extends Figura{
   p6 = p6_;
   p7 = p7_;
   p8 = p8_;
-    
   
   }
 
-  
-  void display(){
+  void display() {
 
     if (mClick) {
       xPos = mouseX;
@@ -37,7 +35,6 @@ class Quad extends Figura{
     translate(xPos, yPos);
     fill(c);
     rotate(radians(angulo));
-    quad(p1,p2,p3,p4,p5,p6,p7,p8);
+    quad(p1, p2, p3, p4, p5, p6, p7, p8);
   }
-
 }

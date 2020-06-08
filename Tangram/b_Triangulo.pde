@@ -1,5 +1,5 @@
-class Triangle extends Figura{
-  
+class Triangle extends Figura {
+
   float p1;
   float p2;
   float p3;
@@ -15,11 +15,8 @@ class Triangle extends Figura{
     p4 = p4_;
     p5 = p5_;
     p6 = p6_;
-    
   }
-  
-  void display(){
-    
+  void display() {
     if (mClick) {
       xPos = mouseX;
       yPos = mouseY;
@@ -30,7 +27,6 @@ class Triangle extends Figura{
     translate(xPos, yPos);
     fill(c);
     rotate(radians(angulo));
-    triangle(p1,p2,p3,p4,p5,p6); 
+    triangle(p1, p2, p3, p4, p5, p6);
   }
-  
 }

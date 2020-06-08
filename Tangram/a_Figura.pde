@@ -1,4 +1,4 @@
-class Figura{
+class Figura {
   char n;
   color c;
   float xPos;
@@ -34,7 +34,6 @@ class Figura{
   }
   
   void selec(){
-    //println(n+"="+tSel);
     if(keyPressed && key == n){
       tSel = true;
     }else{
@@ -86,5 +85,4 @@ class Figura{
       }
     }
   }
-  
 }

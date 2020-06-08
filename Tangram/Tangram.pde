@@ -15,12 +15,72 @@ Quad Pa;
 ////////
 //MODO CREADOR FIGURAS//
 Triangle TG1;
+float TG1X;  //----------------------
+float TG1Y;
+float TG1x1;
+float TG1x2;
+float TG1x3;
+float TG1y1;
+float TG1y2;
+float TG1y3;
 Triangle TG2;
+float TG2X;
+float TG2Y;
+float TG2x1;
+float TG2x2;
+float TG2x3;
+float TG2y1;
+float TG2y2;
+float TG2y3;
 Triangle TM;
+float TMX;
+float TMY;
+float TMx1;
+float TMx2;
+float TMx3;
+float TMy1;
+float TMy2;
+float TMy3;
 Triangle TP1;
+float TP1X;
+float TP1Y;
+float TP1x1;
+float TP1x2;
+float TP1x3;
+float TP1y1;
+float TP1y2;
+float TP1y3;
 Triangle TP2;
+float TP2X;
+float TP2Y;
+float TP2x1;
+float TP2x2;
+float TP2x3;
+float TP2y1;
+float TP2y2;
+float TP2y3;
 Quad CP;
+float CPX;
+float CPY;
+float CPx1;
+float CPx2;
+float CPx3;
+float CPx4;
+float CPy1;
+float CPy2;
+float CPy3;
+float CPy4;
 Quad P;
+float PX;
+float PY;
+float Px1;
+float Px2;
+float Px3;
+float Px4;
+float Py1;
+float Py2;
+float Py3;
+float Py4; //-------------
 
 ////// variables de controles de movimiento //////
 int PixColor;
@@ -217,77 +277,145 @@ void draw() {
       textSize(50);
       text("SAVE", 1450, 670);
       if (((mouseX>=1425 && mouseX<=1600 && mouseY<=700&& mouseY>=600 && mousePressed == true) || keyPressed == true) ) {
-        
+        //Ordenado de coordenadas//
+        //Triangulo grande 1//
+        TG1X=TG1.xPos;   //------------
+        TG1Y=TG1.yPos;
+        TG1x1=TG1.p1;
+        TG1x2=TG1.p3;
+        TG1x3=TG1.p5;
+        TG1y1=TG1.p2;
+        TG1y2=TG1.p4;
+        TG1y3=TG1.p6;
+        //Triangulo grande 2//
+        TG2X=TG2.xPos;
+        TG2Y=TG2.yPos;
+        TG2x1=TG2.p1;
+        TG2x2=TG2.p3;
+        TG2x3=TG2.p5;
+        TG2y1=TG2.p2;
+        TG2y2=TG2.p4;
+        TG2y3=TG2.p6;
+        //Triangulo mediano//
+        TMX=TM.xPos;
+        TMY=TM.yPos;
+        TMx1=TM.p1;
+        TMx2=TM.p3;
+        TMx3=TM.p5;
+        TMy1=TM.p2;
+        TMy2=TM.p4;
+        TMy3=TM.p6;
+        //Triangulo pequeño 1//
+        TP1X=TP1.xPos;
+        TP1Y=TP1.yPos;
+        TP1x1=TP1.p1;
+        TP1x2=TP1.p3;
+        TP1x3=TP1.p5;
+        TP1y1=TP1.p2;
+        TP1y2=TP1.p4;
+        TP1y3=TP1.p6;
+        //Triangulo pequeño 2//
+        TP2X=TP2.xPos;
+        TP2Y=TP2.yPos;
+        TP2x1=TP2.p1;
+        TP2x2=TP2.p3;
+        TP2x3=TP2.p5;
+        TP2y1=TP2.p2;
+        TP2y2=TP2.p4;
+        TP2y3=TP2.p6;
+        //Cuadrado pequeño//
+        CPX=CP.xPos;
+        CPY=CP.yPos;
+        CPx1=CP.p1;
+        CPx2=CP.p3;
+        CPx3=CP.p5;
+        CPx4=CP.p7;
+        CPy1=CP.p2;
+        CPy2=CP.p4;
+        CPy3=CP.p6;
+        CPy4=CP.p8;
+        //Paralelogramo//
+        PX=P.xPos;
+        PY=P.yPos;
+        Px1=P.p1;
+        Px2=P.p3;
+        Px3=P.p5;
+        Px4=P.p7;
+        Py1=P.p2;
+        Py2=P.p4;
+        Py3=P.p6;
+        Py4=P.p8;   //-----------
+
         //Guardado en JSON//
         JSONObject nivel;
         nivel= new JSONObject();
         //Triagnulo grande 1//
-        nivel.setFloat("TG1X", TG1.xPos);
-        nivel.setFloat("TG1Y", TG1.yPos);
-        nivel.setFloat("TG1x1", TG1.p1);
-        nivel.setFloat("TG1y1", TG1.p2);
-        nivel.setFloat("TG1x2", TG1.p3);
-        nivel.setFloat("TG1y2", TG1.p4);
-        nivel.setFloat("TG1x3", TG1.p5);
-        nivel.setFloat("TG1y3", TG1.p6);
+        nivel.setFloat("TG1X", TG1X);
+        nivel.setFloat("TG1Y", TG1Y);
+        nivel.setFloat("TG1x1", TG1x1);
+        nivel.setFloat("TG1y1", TG1y1);
+        nivel.setFloat("TG1x2", TG1x2);
+        nivel.setFloat("TG1y2", TG1y2);
+        nivel.setFloat("TG1x3", TG1x3);
+        nivel.setFloat("TG1y3", TG1y3);
         //Triagnulo grande 2//
-        nivel.setFloat("TG2X", TG2.xPos);
-        nivel.setFloat("TG2Y", TG2.yPos);
-        nivel.setFloat("TG2x1", TG2.p1);
-        nivel.setFloat("TG2y1", TG2.p2);
-        nivel.setFloat("TG2x2", TG2.p3);
-        nivel.setFloat("TG2y2", TG2.p4);
-        nivel.setFloat("TG2x3", TG2.p5);
-        nivel.setFloat("TG2y3", TG2.p6);
+        nivel.setFloat("TG2X", TG2X);
+        nivel.setFloat("TG2Y", TG2Y);
+        nivel.setFloat("TG2x1", TG2x1);
+        nivel.setFloat("TG2y1", TG2y1);
+        nivel.setFloat("TG2x2", TG2x2);
+        nivel.setFloat("TG2y2", TG2y2);
+        nivel.setFloat("TG2x3", TG2x3);
+        nivel.setFloat("TG2y3", TG2y3);
         //Triangulo mediano//
-        nivel.setFloat("TMX", TM.xPos);
-        nivel.setFloat("TMY", TM.yPos);
-        nivel.setFloat("TMx1", TM.p1);
-        nivel.setFloat("TMy1", TM.p2);
-        nivel.setFloat("TMx2", TM.p3);
-        nivel.setFloat("TMy2", TM.p4);
-        nivel.setFloat("TMx3", TM.p5);
-        nivel.setFloat("TMy3", TM.p6);
+        nivel.setFloat("TMX", TMX);
+        nivel.setFloat("TMY", TMY);
+        nivel.setFloat("TMx1", TMx1);
+        nivel.setFloat("TMy1", TMy1);
+        nivel.setFloat("TMx2", TMx2);
+        nivel.setFloat("TMy2", TMy2);
+        nivel.setFloat("TMx3", TMx3);
+        nivel.setFloat("TMy3", TMy3);
         //Triangulo pequeño 1//
-        nivel.setFloat("TP1X", TP1.xPos);
-        nivel.setFloat("TP1Y", TP1.yPos);
-        nivel.setFloat("TP1x1", TP1.p1);
-        nivel.setFloat("TP1y1", TP1.p2);
-        nivel.setFloat("TP1x2", TP1.p3);
-        nivel.setFloat("TP1y2", TP1.p4);
-        nivel.setFloat("TP1x3", TP1.p5);
-        nivel.setFloat("TP1y3", TP1.p6);
+        nivel.setFloat("TP1X", TP1X);
+        nivel.setFloat("TP1Y", TP1Y);
+        nivel.setFloat("TP1x1", TP1x1);
+        nivel.setFloat("TP1y1", TP1y1);
+        nivel.setFloat("TP1x2", TP1x2);
+        nivel.setFloat("TP1y2", TP1y2);
+        nivel.setFloat("TP1x3", TP1x3);
+        nivel.setFloat("TP1y3", TP1y3);
         //Triangulo pequeño 2// 
-        nivel.setFloat("TP2X", TP2.xPos);
-        nivel.setFloat("TP2Y", TP2.yPos);
-        nivel.setFloat("TP2x1", TP2.p1);
-        nivel.setFloat("TP2y1", TP2.p2);
-        nivel.setFloat("TP2x2", TP2.p3);
-        nivel.setFloat("TP2y2", TP2.p4);
-        nivel.setFloat("TP2x3", TP2.p5);
-        nivel.setFloat("TP2y3", TP2.p6);
+        nivel.setFloat("TP2X", TP2X);
+        nivel.setFloat("TP2Y", TP2Y);
+        nivel.setFloat("TP2x1", TP2x1);
+        nivel.setFloat("TP2y1", TP2y1);
+        nivel.setFloat("TP2x2", TP2x2);
+        nivel.setFloat("TP2y2", TP2y2);
+        nivel.setFloat("TP2x3", TP2x3);
+        nivel.setFloat("TP2y3", TP2y3);
         //Cuadrado pequeño//
-        nivel.setFloat("CPX", CP.xPos);
-        nivel.setFloat("CPY", CP.yPos);
-        nivel.setFloat("CPx1", CP.p1);
-        nivel.setFloat("CPy1", CP.p2);
-        nivel.setFloat("CPx2", CP.p3);
-        nivel.setFloat("CPy2", CP.p4);
-        nivel.setFloat("CPx3", CP.p5);
-        nivel.setFloat("CPy3", CP.p6);
-        nivel.setFloat("CPx4", CP.p7);
-        nivel.setFloat("CPy4", CP.p8);
+        nivel.setFloat("CPX", CPX);
+        nivel.setFloat("CPY", CPY);
+        nivel.setFloat("CPx1", CPx1);
+        nivel.setFloat("CPy1", CPy1);
+        nivel.setFloat("CPx2", CPx2);
+        nivel.setFloat("CPy2", CPy2);
+        nivel.setFloat("CPx3", CPx3);
+        nivel.setFloat("CPy3", CPy3);
+        nivel.setFloat("CPx4", CPx4);
+        nivel.setFloat("CPy4", CPy4);
         //Paralelpipedo//
-        nivel.setFloat("PX", P.xPos);
-        nivel.setFloat("PY", P.yPos);
-        nivel.setFloat("Px1", P.p1);
-        nivel.setFloat("Py1", P.p2);
-        nivel.setFloat("Px2", P.p3);
-        nivel.setFloat("Py2", P.p4);
-        nivel.setFloat("Px3", P.p5);
-        nivel.setFloat("Py3", P.p6);
-        nivel.setFloat("Px4", P.p7);
-        nivel.setFloat("Py4", P.p8);
+        nivel.setFloat("PX", PX);
+        nivel.setFloat("PY", PY);
+        nivel.setFloat("Px1", Px1);
+        nivel.setFloat("Py1", Py1);
+        nivel.setFloat("Px2", Px2);
+        nivel.setFloat("Py2", Py2);
+        nivel.setFloat("Px3", Px3);
+        nivel.setFloat("Py3", Py3);
+        nivel.setFloat("Px4", Px4);
+        nivel.setFloat("Py4", Py4);
         saveJSONObject(nivel, "data/"+num_nivC);
 
         delay(3000);
