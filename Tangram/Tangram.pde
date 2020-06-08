@@ -551,7 +551,7 @@ void draw() {
     }
   }
   
-  println(TG1.p1,TG1.p2);
+  
   //// reset del contador de direccion del angulo ////
   anguloCont = 0;
   
