@@ -1,7 +1,7 @@
 PImage img;
 
 //Archivos JSON//
-JSONObject nivc;
+JSONObject nivc;  // nivc = niveles creados
 JSONObject nivActual;
 
 ////////
@@ -27,8 +27,6 @@ int PixColor;
 float anguloCont;
 float acc = 0.7;
 //////////////////////////////////////////////////
-
-boolean mouseClick = false;
 
 //variable de victoria 
 boolean victoria=false;
@@ -125,21 +123,38 @@ void draw() {
     fill(R, G, B);
     textSize(100);
     text("CREADOR", 925, 637.5);
+    
+    //controles exp
+    fill(0, 0, 0);
+    textSize(50);
+    text("for play press (p), for creador press (c)", 150, 800);
 
     ///evento para inicio de partida///
-    if (((mouseX>=150 && mouseX<=690 && mouseY<=700&& mouseY>=500 && mousePressed == true) || keyPressed == true) && injuego==false) {
+    if (((mouseX>=150 && mouseX<=690 && mouseY<=700&& mouseY>=500 && mousePressed == true) || (keyPressed == true && key == 'p')) && injuego==false) {
       injuego=true;
       menu=false;
     }
 
     ///evento para modo creador///
-    if (((mouseX>=900 && mouseX<=1440 && mouseY<=700&& mouseY>=500 && mousePressed == true) || keyPressed == true) && increador==false) {
+    if (((mouseX>=900 && mouseX<=1440 && mouseY<=700&& mouseY>=500 && mousePressed == true) || (keyPressed == true && key == 'c')) && increador==false) {
       increador=true;
       menu=false;
     }
   } else {
 
     if (increador) {
+      //Boton de volver
+      stroke(10, 10, 10);
+      fill(255, 255, 0);
+      quad(1425, 500, 1425, 400, 1600, 400, 1600, 500);
+      fill(0, 0, 0);
+      textSize(50);
+      text("MENU", 1450, 470);
+      if (((mouseX>=1425 && mouseX<=1600 && mouseY<=500&& mouseY>=400 && mousePressed == true) || (keyPressed == true && key == 'b')) ) {
+        menu=true;
+        increador=false;
+      }
+      
       textSize(100);
       fill(R, G, B);
       text("Crea tu propio nivel ", 10, 125);
@@ -216,7 +231,7 @@ void draw() {
       fill(0, 0, 0);
       textSize(50);
       text("SAVE", 1450, 670);
-      if (((mouseX>=1425 && mouseX<=1600 && mouseY<=700&& mouseY>=600 && mousePressed == true) || keyPressed == true) ) {
+      if (((mouseX>=1425 && mouseX<=1600 && mouseY<=700&& mouseY>=600 && mousePressed == true) || (keyPressed == true && key == 's')) ) {
 
         //Guardado en JSON//
         JSONObject nivel;
@@ -224,70 +239,31 @@ void draw() {
         //Triagnulo grande 1//
         nivel.setFloat("TG1X", TG1.xPos);
         nivel.setFloat("TG1Y", TG1.yPos);
-        nivel.setFloat("TG1x1", TG1.p1);
-        nivel.setFloat("TG1y1", TG1.p2);
-        nivel.setFloat("TG1x2", TG1.p3);
-        nivel.setFloat("TG1y2", TG1.p4);
-        nivel.setFloat("TG1x3", TG1.p5);
-        nivel.setFloat("TG1y3", TG1.p6);
+        nivel.setFloat("TG1Ang", TG1.angulo);
         //Triagnulo grande 2//X
         nivel.setFloat("TG2X", TG2.xPos);
         nivel.setFloat("TG2Y", TG2.yPos);
-        nivel.setFloat("TG2x1", TG2.p1);
-        nivel.setFloat("TG2y1", TG2.p2);
-        nivel.setFloat("TG2x2", TG2.p3);
-        nivel.setFloat("TG2y2", TG2.p4);
-        nivel.setFloat("TG2x3", TG2.p5);
-        nivel.setFloat("TG2y3", TG2.p6);
+        nivel.setFloat("TG2Ang", TG2.angulo);
         //Triangulo mediano//
         nivel.setFloat("TMX", TM.xPos);
         nivel.setFloat("TMY", TM.yPos);
-        nivel.setFloat("TMx1", TM.p1);
-        nivel.setFloat("TMy1", TM.p2);
-        nivel.setFloat("TMx2", TM.p3);
-        nivel.setFloat("TMy2", TM.p4);
-        nivel.setFloat("TMx3", TM.p5);
-        nivel.setFloat("TMy3", TM.p6);
+        nivel.setFloat("TMAng", TM.angulo);
         //Triangulo pequeño 1//
         nivel.setFloat("TP1X", TP1.xPos);
         nivel.setFloat("TP1Y", TP1.yPos);
-        nivel.setFloat("TP1x1", TP1.p1);
-        nivel.setFloat("TP1y1", TP1.p2);
-        nivel.setFloat("TP1x2", TP1.p3);
-        nivel.setFloat("TP1y2", TP1.p4);
-        nivel.setFloat("TP1x3", TP1.p5);
-        nivel.setFloat("TP1y3", TP1.p6);
+        nivel.setFloat("TP1Ang", TP1.angulo);
         //Triangulo pequeño 2// 
         nivel.setFloat("TP2X", TP2.xPos);
         nivel.setFloat("TP2Y", TP2.yPos);
-        nivel.setFloat("TP2x1", TP2.p1);
-        nivel.setFloat("TP2y1", TP2.p2);
-        nivel.setFloat("TP2x2", TP2.p3);
-        nivel.setFloat("TP2y2", TP2.p4);
-        nivel.setFloat("TP2x3", TP2.p5);
-        nivel.setFloat("TP2y3", TP2.p6);
+        nivel.setFloat("TP2Ang", TP2.angulo);
         //Cuadrado pequeño//
         nivel.setFloat("CPX", CP.xPos);
         nivel.setFloat("CPY", CP.yPos);
-        nivel.setFloat("CPx1", CP.p1);
-        nivel.setFloat("CPy1", CP.p2);
-        nivel.setFloat("CPx2", CP.p3);
-        nivel.setFloat("CPy2", CP.p4);
-        nivel.setFloat("CPx3", CP.p5);
-        nivel.setFloat("CPy3", CP.p6);
-        nivel.setFloat("CPx4", CP.p7);
-        nivel.setFloat("CPy4", CP.p8);
+        nivel.setFloat("CPAng", CP.angulo);
         //Paralelpipedo//
         nivel.setFloat("PX", P.xPos);
         nivel.setFloat("PY", P.yPos);
-        nivel.setFloat("Px1", P.p1);
-        nivel.setFloat("Py1", P.p2);
-        nivel.setFloat("Px2", P.p3);
-        nivel.setFloat("Py2", P.p4);
-        nivel.setFloat("Px3", P.p5);
-        nivel.setFloat("Py3", P.p6);
-        nivel.setFloat("Px4", P.p7);
-        nivel.setFloat("Py4", P.p8);
+        nivel.setFloat("PAng", P.angulo);
         saveJSONObject(nivel, "data/"+num_nivC);
 
         delay(3000);
@@ -306,7 +282,7 @@ void draw() {
         fill(R, G, B);
         textSize(100);
         text("NORMALES", 160, 437.5);
-        if (((mouseX>=150 && mouseX<=700 && mouseY<=500&& mouseY>=300 && mousePressed == true) || keyPressed == true) ) {
+        if (((mouseX>=150 && mouseX<=700 && mouseY<=500&& mouseY>=300 && mousePressed == true) || (keyPressed == true && key == 'n')) ) {
           niveles=true;
           botones=false;
         }
@@ -317,15 +293,36 @@ void draw() {
         fill(R, G, B);
         textSize(100);
         text("CREADOS", 925, 437.5);
-        if (((mouseX>=900 && mouseX<=1440 && mouseY<=500&& mouseY>=300 && mousePressed == true) || keyPressed == true) ) {
+        if (((mouseX>=900 && mouseX<=1440 && mouseY<=500&& mouseY>=300 && mousePressed == true) || (keyPressed == true && key == 'v')) ) {
           creados=true;
           botones=false;
         }
+        
+        // controles exp
+        fill(0, 0, 0);
+        textSize(50);
+        text("for Normales press (n), for creados press (v)", 150, 800);
+
       }
       
       //// niveles por defecto //
       
       if (niveles) {
+        
+        //Boton de volver
+        stroke(10, 10, 10);
+        fill(255, 255, 0);
+        quad(1425, 500, 1425, 400, 1600, 400, 1600, 500);
+        fill(0, 0, 0);
+        textSize(50);
+        text("MENU", 1450, 470);
+        if (((mouseX>=1425 && mouseX<=1600 && mouseY<=500&& mouseY>=400 && mousePressed == true) || (keyPressed == true && key == 'b')) ) {
+          menu=true;
+          injuego=false;
+          niveles=false;
+          botones=true;
+        }
+        
         comprobar(pixB);
         //Niv 1
         if (niv==1) {
@@ -413,6 +410,19 @@ void draw() {
 
           comprobar_nivc(pixB);
           
+          //Boton de volver
+          stroke(10, 10, 10);
+          fill(255, 255, 0);
+          quad(1425, 500, 1425, 400, 1600, 400, 1600, 500);
+          fill(0, 0, 0);
+          textSize(50);
+          text("MENU", 1450, 470);
+          if (((mouseX>=1425 && mouseX<=1600 && mouseY<=500&& mouseY>=400 && mousePressed == true) || (keyPressed == true && key == 'b')) ) {
+            menu=true;
+            creados=false;
+            injuego=false;
+            botones=true;
+          }
           
           nivActual=loadJSONObject("data/"+str(nivC));
 
@@ -421,7 +431,8 @@ void draw() {
           translate(int(nivActual.getFloat("TG1X")), int(nivActual.getFloat("TG1Y")));
           stroke(255, 255, 255);
           fill(255, 255, 255);
-          triangle(int(nivActual.getFloat("TG1x1")), int(nivActual.getFloat("TG1y1")), int(nivActual.getFloat("TG1x2")), int(nivActual.getFloat("TG1y2")), int(nivActual.getFloat("TG1x3")), int(nivActual.getFloat("TG1y3")));
+          rotate(radians(int(nivActual.getFloat("TG1Ang"))));
+          triangle(TG1.p1, TG1.p2, TG1.p3, TG1.p4, TG1.p5, TG1.p6);
           popMatrix();
 
           //Triangulo grande 2//
@@ -429,7 +440,8 @@ void draw() {
           translate(int(nivActual.getFloat("TG2X")), int(nivActual.getFloat("TG2Y")));
           stroke(255, 255, 255);
           fill(255, 255, 255);
-          triangle(int(nivActual.getFloat("TG2x1")), int(nivActual.getFloat("TG2y1")), int(nivActual.getFloat("TG2x2")), int(nivActual.getFloat("TG2y2")), int(nivActual.getFloat("TG2x3")), int(nivActual.getFloat("TG2y3")));
+          rotate(radians(int(nivActual.getFloat("TG2Ang"))));
+          triangle(TG2.p1, TG2.p2, TG2.p3, TG2.p4, TG2.p5, TG2.p6);
           popMatrix();
 
           //Triangulo mediano//
@@ -437,7 +449,8 @@ void draw() {
           translate(int(nivActual.getFloat("TMX")), int(nivActual.getFloat("TMY")));
           stroke(255, 255, 255);
           fill(255, 255, 255);
-          triangle(int(nivActual.getFloat("TMx1")), int(nivActual.getFloat("TMy1")), int(nivActual.getFloat("TMx2")), int(nivActual.getFloat("TMy2")), int(nivActual.getFloat("TMx3")), int(nivActual.getFloat("TMy3")));
+          rotate(radians(int(nivActual.getFloat("TMAng"))));
+          triangle(TM.p1, TM.p2, TM.p3, TM.p4, TM.p5, TM.p6);
           popMatrix();
 
           //Triangulo pequeño 1//
@@ -445,7 +458,8 @@ void draw() {
           translate(int(nivActual.getFloat("TP1X")), int(nivActual.getFloat("TP1Y")));
           stroke(255, 255, 255);
           fill(255, 255, 255);
-          triangle(int(nivActual.getFloat("TP1x1")), int(nivActual.getFloat("TP1y1")), int(nivActual.getFloat("TP1x2")), int(nivActual.getFloat("TP1y2")), int(nivActual.getFloat("TP1x3")), int(nivActual.getFloat("TP1y3")));
+          rotate(radians(int(nivActual.getFloat("TP1Ang"))));
+          triangle(TP1.p1, TP1.p2, TP1.p3, TP1.p4, TP1.p5, TP1.p6);
           popMatrix();
 
           //Triangulo pequeño 2//
@@ -453,7 +467,8 @@ void draw() {
           translate(int(nivActual.getFloat("TP2X")), int(nivActual.getFloat("TP2Y")));
           stroke(255, 255, 255);
           fill(255, 255, 255);
-          triangle(int(nivActual.getFloat("TP2x1")), int(nivActual.getFloat("TP2y1")), int(nivActual.getFloat("TP2x2")), int(nivActual.getFloat("TP2y2")), int(nivActual.getFloat("TP2x3")), int(nivActual.getFloat("TP2y3")));
+          rotate(radians(int(nivActual.getFloat("TP2Ang"))));
+          triangle(TP2.p1, TP2.p2, TP2.p3, TP2.p4, TP2.p5, TP2.p6);
           popMatrix();
 
           //Cuadrado pequeño//
@@ -461,7 +476,8 @@ void draw() {
           translate(int(nivActual.getFloat("CPX")), int(nivActual.getFloat("CPY")));
           stroke(255, 255, 255);
           fill(255, 255, 255);
-          quad(int(nivActual.getFloat("CPx1")), int(nivActual.getFloat("CPy1")), int(nivActual.getFloat("CPx2")), int(nivActual.getFloat("CPy2")), int(nivActual.getFloat("CPx3")), int(nivActual.getFloat("CPy3")), int(nivActual.getFloat("CPx4")), int(nivActual.getFloat("CPy4")));
+          rotate(radians(int(nivActual.getFloat("CPAng"))));
+          quad(CP.p1, CP.p2, CP.p3, CP.p4, CP.p5, CP.p6, CP.p7, CP.p8);
           popMatrix();
 
           //Paralelepipedo//
@@ -469,7 +485,8 @@ void draw() {
           translate(int(nivActual.getFloat("PX")), int(nivActual.getFloat("PY")));
           stroke(255, 255, 255);
           fill(255, 255, 255);
-          quad(int(nivActual.getFloat("Px1")), int(nivActual.getFloat("Py1")), int(nivActual.getFloat("Px2")), int(nivActual.getFloat("Py2")), int(nivActual.getFloat("Px3")), int(nivActual.getFloat("Py3")), int(nivActual.getFloat("Px4")), int(nivActual.getFloat("Py4")));
+          rotate(radians(int(nivActual.getFloat("PAng"))));
+          quad(P.p1, P.p2, P.p3, P.p4, P.p5, P.p6, P.p7, P.p8);
           popMatrix();
 
           //// Metodos de las figuras ////
@@ -534,7 +551,7 @@ void draw() {
     }
   }
   
-  
+  println(TG1.p1,TG1.p2);
   //// reset del contador de direccion del angulo ////
   anguloCont = 0;
   
@@ -556,7 +573,7 @@ void comprobar(int pixB) {
       pixBl=+1;
     }
   }
-  if (pixBl<=100 && mousePressed && mouseButton==CENTER) {
+  if (pixBl<=100 &&( (mousePressed && mouseButton==CENTER) || (keyPressed && key == 'c') )) {
     niv=niv+1;
     delay(2000);
   }
@@ -571,7 +588,7 @@ void comprobar_nivc(int pixB) {
       pixBl=+1;
     }
   }
-  if (pixBl<=100 && mousePressed && mouseButton==CENTER) {
+  if (pixBl<=100 &&( (mousePressed && mouseButton==CENTER) || (keyPressed && key == 'c') )) {
     if(nivC<nivc.getInt("Numero de niveles creados")){
       nivC ++;
     }else{
